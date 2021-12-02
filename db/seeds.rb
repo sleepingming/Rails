@@ -16,29 +16,29 @@ categories = Category.create!([
   ])
 
 tests = Test.create!([
-  {title: "Rails", level: 1, category_id: categories[0].id, user_id: users[0].id}
-  {title: "HTML", level: 0, category_id: categories[0].id, user_id: users[0].id}
+  {title: "Rails", level: 1, category: categories[0], author: users[0]}
+  {title: "HTML", level: 0, category: categories[0], author: users[0]}
   ])
 
 questions = Question.create!([
-  {title: "В каком году был создан Rails?", test_id: tests[0].id}
-  {title: "Кто является автором Rails?", test_id: tests[0].id}
-  {title: "В каком году был разработан HTML?", test_id: tests[1].id}
-  {title: "Кто является разработчиком HTML?", test_id: tests[1].id}
+  {title: "В каком году был создан Rails?", test: tests[0]}
+  {title: "Кто является автором Rails?", test: tests[0]}
+  {title: "В каком году был разработан HTML?", test: tests[1]}
+  {title: "Кто является разработчиком HTML?", test: tests[1]}
   ])
 
 answers = Answer.create!([
-  {title: "2005", correct: 1, question_id: questions[0].id}
-  {title: "2001", correct: 0, question_id: questions[0].id}
-  {title: "Дэвид Ханссон", correct: 1, question_id: questions[1].id}
-  {title: "Тим Бернерс-Ли", correct: 0, question_id: questions[1].id}
-  {title: "1993", correct: 1, question_id: questions[2].id}
-  {title: "1996", correct: 0, question_id: questions[2].id}
-  {title: "Тим Бернерс-Ли", correct: 1, question_id: questions[3].id}
-  {title: "Дэвид Ханссон", correct: 0, question_id: questions[3].id}
+  {title: "2005", correct: 1, question: questions[0]}
+  {title: "2001", correct: 0, question: questions[0]}
+  {title: "Дэвид Ханссон", correct: 1, question: questions[1]}
+  {title: "Тим Бернерс-Ли", correct: 0, question: questions[1]}
+  {title: "1993", correct: 1, question: questions[2]}
+  {title: "1996", correct: 0, question: questions[2]}
+  {title: "Тим Бернерс-Ли", correct: 1, question: questions[3]}
+  {title: "Дэвид Ханссон", correct: 0, question: questions[3]}
   ])
 
 results = Result.create!([
-  {user.id: users[0].id, test_id: tests[0].id}
-  {user.id: users[0].id, test_id: tests[1].id}
+  {user: users[0], test: tests[0]}
+  {user: users[0], test: tests[1]}
   ])
