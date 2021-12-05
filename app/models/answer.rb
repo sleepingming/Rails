@@ -1,13 +1,14 @@
 class Answer < ApplicationRecord
-  scope :correct, -> { where(correct: true) }
 
   belongs_to :question
 
-  validate :validate_answers
+  validate :validate_answers, on: :create
   validates :answer, presence: true
 
+  scope :correct, -> { where(correct: true) }
+
   def validate_answers
-    if question.answer.count > 4
+    if question.answer.count >= 4
       errors.add(:answer, "Количество ответов должно быть от 1 до 4")
   end
 end
