@@ -8,11 +8,9 @@ class QuestionsController < ApplicationController
     render plain: @test.questions.pluck(:body)
   end
 
-  def show
-  end
+  def show;end
 
-  def new
-  end
+  def new;end
 
   def create
     @question = @test.questions.build(question_params)
