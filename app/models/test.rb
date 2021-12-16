@@ -4,7 +4,7 @@ class Test < ApplicationRecord
   scope :hard_level, -> { where(level: 5..Float::INFINITY) }
 
   belongs_to :category
-  belongs_to :author, class_name: "User", foreign_key: 'author_id'
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   has_many :questions, dependent: :destroy
   has_many :results, dependent: :destroy
