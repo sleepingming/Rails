@@ -1,6 +1,6 @@
 class TestPassage < ApplicationRecord
 
-  SUCCESS_PRECENT = 85
+  SUCCESS_PERCENT = 85
 
   belongs_to :user
   belongs_to :test
@@ -16,7 +16,7 @@ class TestPassage < ApplicationRecord
     self.test.questions.count
   end
 
-  def pass_precent
+  def pass_percent
     (correct_answers.count / questions_in_test) * 100
   end
 
@@ -29,7 +29,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    pass_precent >= SUCCESS_PRECENT
+    pass_percent >= SUCCESS_PERCENT
   end
 
   private
