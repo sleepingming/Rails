@@ -17,12 +17,12 @@ class TestPassage < ApplicationRecord
   end
 
   def pass_percent
-    (correct_answers.count / questions_in_test) * 100
+    correct_answers.count.to_f / questions_in_test.to_f * 100
   end
 
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
-      self correct_questions += 1
+      self.correct_questions += 1
     end
     save!
   end
