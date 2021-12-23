@@ -7,6 +7,5 @@ class CreateTestPassages < ActiveRecord::Migration[6.1]
       t.integer :correct_questions, default: 0
       t.timestamps
     end
-    add_foreign_key :test_passages, :questions, column: :current_question_id
   end
 end
