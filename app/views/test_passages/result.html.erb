@@ -1,0 +1,10 @@
+
+<% if @test.passage.success? %>
+  <h1>Тест <%= @test_passage.test.title %> пройден!</h1>
+  <p>Ваш результат: <span style="color: green"><%= @test_passage.pass_percent %>%</span></p>
+  <% else %>
+  <h1>Тест <%= @test_passage.test.title %> не пройден!</h1>
+  <p>Ваш результат: <span style="color: red"><%= @test_passage.pass_percent %>%</span></p>
+<% end %>
+
+<%= link_to "Ко всем тестам", tests_path %>

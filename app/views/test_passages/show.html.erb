@@ -1,0 +1,16 @@
+<h1> Тест <%= @test_passage.test.title %></h1>
+
+<b>
+  <% @test_passage.current_question.id %>. <% @test_passage.current_question.body %>
+</b>
+
+<%= form_with url: test_passage_path(@test_passage), local: true do |form|%>
+  <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body do |b|%>
+    <p>
+      <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+      <%= b.label %>
+    </p>
+  <% end %>
+
+  <p><%= form.submit 'Следующий вопрос' %></p>
+<% end %>
