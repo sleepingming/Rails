@@ -10,5 +10,6 @@ class Answer < ApplicationRecord
   def validate_answers
     if question.answer.count >= 4
       errors.add(:answer, "Количество ответов должно быть от 1 до 4")
+    end
   end
 end
