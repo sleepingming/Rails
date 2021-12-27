@@ -6,7 +6,9 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages, dependent: :destroy
   has_many :test_passages, dependent: :destroy
 
+
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+
 
   has_secure_password
 
