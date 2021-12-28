@@ -11,8 +11,10 @@ class User < ApplicationRecord
   has_secure_password
 
   def passed_tests(level)
-    Test
-      .joins(:test_passages)
-      .where(level: level, test_passages: { user: id })
+    tests.where(level: level)
+  end
+
+  def test_passage(test)
+    test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 end

@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: 'Неверный логин или пароль'
       cookies[:previous_url] = request.original_url
     end
-    cookies[:email] = current_user&.email
   end
 
   def current_user

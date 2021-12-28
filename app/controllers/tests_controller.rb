@@ -2,7 +2,6 @@ class TestsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_test, only: %i[show edit update destroy start]
-  before_action :set_user, only: :start
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -19,7 +18,7 @@ class TestsController < ApplicationController
   end
 
   def create
-    @test = Test.new(test_params)
+    @test = @current_user.created_tests.build(test_params)
     if @test.save
       redirect_to @test
     else
@@ -41,8 +40,9 @@ class TestsController < ApplicationController
   end
 
   def start
-    @current_user.tests.push(@test)
-    redirect_to @current_user.test_passage(@test)
+    @user = current_user
+    @user.tests.push(@test)
+    redirect_to @user.test_passage(@test)
   end
 
   private
@@ -53,10 +53,6 @@ class TestsController < ApplicationController
 
   def set_test
     @test = Test.find(params[:id])
-  end
-
-  def set_user
-    @user = User
   end
 
   def rescue_with_test_not_found

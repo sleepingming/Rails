@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <p class="nav user">Welcome, <b><% current_user.email %></b> Guru</p>
+  <p> <%= link_to "Выйти",
+          logout_path,
+          method: "delete",
+          data: { confirm: 'Вы уверены?'}  %></p>
+<% else %>
+  <p>Добро пожаловать</p>
+  <p><%= link_to "Регистрация", signup_path %></p>
+<% end %>
