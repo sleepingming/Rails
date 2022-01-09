@@ -1,0 +1,14 @@
+<h1>Вопрос:</h1>
+<p><%= @answer.question.body %></p>
+<b>Ответ:</b>
+<%= @answer.body %><br>
+<b>Correct:</b>
+<%= @answer.correct %><br>
+<p>
+  <%= link_to "Delete",
+  admin_answer_path(@answer),
+  method: "delete",
+  data: { confirm: 'Are you sure?'} %>
+  <%= link_to "Back", admin_question_path(@answer.question) %>
+  <%= link_to "Edit", edit_admin_answer_url(@answer) %>
+</p>

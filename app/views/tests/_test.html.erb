@@ -5,10 +5,4 @@
   <td><%= button_to 'Начать тест', start_test_path(test) %></td>
 
   <td><%= link_to 'Перейти к тесту', test_path(test) %></td>
-  <td>
-    <%= link_to 'Удалить',
-                test_path(test),
-                method: :delete,
-                data: {confirm: 'Удалить тест?'} %>
-  </td>
 </tr>
