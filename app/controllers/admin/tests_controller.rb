@@ -1,9 +1,5 @@
 class Admin::TestsController < Admin::BaseController
 
-  before_action :set_test, only: %i[start]
-
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
-
   def show
     @test = Test.find(params[:id])
   end
@@ -36,11 +32,6 @@ class Admin::TestsController < Admin::BaseController
     else
       render :edit
     end
-  end
-
-  def start
-    current_user.tests.push(@test)
-    redirect_to current_user.test_passage(@test)
   end
 
   private
