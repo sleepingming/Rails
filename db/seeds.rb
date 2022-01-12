@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create!([
-  {email: "zxc@example.com", password: 123}
+  {email: "aaa@example.com", password: '123123', password_confirmation: '123123'}
   ])
 
 categories = Category.create!([
@@ -21,10 +21,10 @@ tests = Test.create!([
   ])
 
 questions = Question.create!([
-  {title: "В каком году был создан Rails?", test: tests[0]},
-  {title: "Кто является автором Rails?", test: tests[0]},
-  {title: "В каком году был разработан HTML?", test: tests[1]},
-  {title: "Кто является разработчиком HTML?", test: tests[1]}
+  {body: "В каком году был создан Rails?", test: tests[0]},
+  {body: "Кто является автором Rails?", test: tests[0]},
+  {body: "В каком году был разработан HTML?", test: tests[1]},
+  {body: "Кто является разработчиком HTML?", test: tests[1]}
   ])
 
 answers = Answer.create!([
