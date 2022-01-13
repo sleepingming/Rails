@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -7,6 +6,7 @@ class User < ApplicationRecord
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages, dependent: :destroy
 
+  belongs_to :current_user, class_name: 'User', optional: true
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
@@ -19,7 +19,7 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
-  def admin?(user)
-    user.is_a?(Admin)
+  def admin?
+    !current_user.is_a?(Admin)
   end
 end
