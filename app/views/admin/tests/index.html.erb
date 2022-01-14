@@ -1,0 +1,16 @@
+<h1>Тесты</h1>
+
+<p> <%= link_to 'Создать тест', new_admin_test_path %></p>
+<table>
+  <thead>
+  <tr>
+    <th>Тест</th>
+    <th>Уровень</th>
+    <th>Вопросы</th>
+    <th>Действие</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @tests %>
+  </tbody>
+</table>

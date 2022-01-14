@@ -1,0 +1,13 @@
+<h1>Вопрос из теста #<%=@question.test_id%>:</h1>
+<p><%=@question.body%></p>
+
+<h2>Ответы</h2>
+
+<%= link_to "Создать вопрос", new_admin_question_answer_path(@question) %>
+
+<ol>
+  <%= render partial: 'admin/answers/answer', collection: @question.answers %>
+</ol>
+
+<%= link_to "Удалить", admin_question_path(@question), method: "delete" %>
+<%= link_to "Назад", admin_test_path(@question.test) %>
