@@ -51,5 +51,6 @@ class TestPassage < ApplicationRecord
       self.current_question = test.questions.first if test.present?
     else
       test.questions.order(:id).where('id > ?', current_question.id).first
+    end
   end
 end
