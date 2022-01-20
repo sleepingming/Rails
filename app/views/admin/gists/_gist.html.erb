@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to "#{gist.question.body[0..24]}", admin_question_path(gist.question)%></td>
+  <td><%= link_to "#{gist.gist_url}", "#{gist.gist_url}" %> </td>
+  <td><%= gist.user_email %></td>
+</tr>

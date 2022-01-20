@@ -1,0 +1,10 @@
+<h1>Gists</h1>
+<table>
+  <tr>
+    <th>Вопрос</th>
+    <th>Gist URL</th>
+    <th>Пользователь</th>
+  </tr>
+  <%= render partial: 'admin/gists/gist', collection: Gist.all %>
+</table>
+<%= link_to "Назад", admin_tests_path %>

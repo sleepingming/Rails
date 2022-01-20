@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+
+  test_passages:
+    result:
+      header: "The %{title} test was completed!"
+
+  gists:
+    create:
+      success: <b><a href="%{url}">Gist</a> created </b>
+      failure: "An error occured while saving gist"
