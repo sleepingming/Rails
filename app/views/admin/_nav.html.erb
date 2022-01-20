@@ -3,6 +3,6 @@
 
   <div class="nav-admin user">
     Welcome, <b><%= current_user.email %></b> Guru |
-    <%= link_to I18n('authentication.logout'), destroy_user_session_path, method: :delete %>
+    <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
   </div>
 </div>
