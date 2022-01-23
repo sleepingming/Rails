@@ -38,5 +38,5 @@ en:
 
   gists:
     create:
-      success: <b><a href="%{url}">Gist</a> created </b>
+      success_html: <b><a href="%{url}">Gist</a> created </b>
       failure: "An error occured while saving gist"

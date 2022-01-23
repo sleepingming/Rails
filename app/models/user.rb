@@ -20,6 +20,6 @@ class User < ApplicationRecord
   end
 
   def admin?
-    current_user.is_a?(Admin)
+    is_a?(Admin)
   end
 end

@@ -275,7 +275,7 @@ ru:
       failure: "Во время сохранения gist произошла ошибка"
 
   gists:
-    success: <b>Gist сохранён! <a href="%{url}" target="_blank" rel="nofollow">%{url_id}</a></b>
+    success_html: <b>Gist сохранён! <a href="%{url}" target="_blank" rel="nofollow">Gist</a></b>
     failure: "Произошла ошибка во время создания Gist"
 
   services:
