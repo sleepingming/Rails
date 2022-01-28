@@ -1,7 +1,7 @@
 class GistsController < ApplicationController
   def create
     set_test_passage
-    result = GistQuestionService.new(@test_passage.current_question).gist
+    result = GistQuestionService.new(@test_passage.current_question).call
 
     if result.success?
       flash[:notice] = t('gists.success_html', url: result.url)
