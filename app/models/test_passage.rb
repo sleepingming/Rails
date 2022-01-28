@@ -2,6 +2,7 @@ class TestPassage < ApplicationRecord
 
   SUCCESS_PERCENT = 85
 
+  has_many :gists
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
