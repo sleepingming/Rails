@@ -1,0 +1,12 @@
+form
+  .match {
+    border-color: green;
+    border-radius: 10px;
+    border-width: medium;
+  }
+
+  .not-match {
+    border-color: red;
+    border-radius: 10px;
+    border-width: medium;
+  }
