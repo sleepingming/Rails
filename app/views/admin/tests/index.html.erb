@@ -1,10 +1,14 @@
 <h1>Тесты</h1>
 <p><%= link_to 'Создать тест', new_admin_test_path %></p>
 <p><%= link_to 'Gists', admin_gists_path %></p>
-<table>
+<table class="table">
   <thead>
   <tr>
-    <th>Тест</th>
+    <th class="sort-by-title pointer">
+      Тест
+      <%= octicon 'arrow-up', class: 'text-success hide'%>
+      <%= octicon 'arrow-down', class: 'text-success hide'%>
+    </th>
     <th>Уровень</th>
     <th>Вопросы</th>
     <th>Действие</th>
