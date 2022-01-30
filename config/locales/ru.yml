@@ -281,3 +281,8 @@ ru:
   services:
     gist_question_service:
       description: "Тест: %{title}"
+
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"

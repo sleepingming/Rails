@@ -11,6 +11,6 @@
 
   <%= render partial: 'questions/question', collection: @test.questions %>
 </table>
-
+<p><%= link_to "Редактировать", edit_admin_test_path(@test) %></p>
 <p><%= link_to "Создать вопрос", new_admin_test_question_path(@test) %></p>
 <p><%= link_to "Все тесты", admin_tests_path %></p>
