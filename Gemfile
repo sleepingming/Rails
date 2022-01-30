@@ -30,6 +30,16 @@ gem 'devise', '~> 4.0'
 
 gem "octokit", "~> 4.0"
 
+gem 'jquery-rails'
+
+gem 'coffee-script'
+
+gem 'execjs'
+
+gem 'bootstrap', '~> 5.1.3'
+
+gem 'octicons_helper'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

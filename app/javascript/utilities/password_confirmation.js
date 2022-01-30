@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', function () {
-  var form = document.querySelector('form')
-  var password = form.elements.user_password
-  var password_confirmation = form.elements.user_password_confirmation
+  const form = document.querySelector('form')
+  const password = form.elements.user_password
+  const password_confirmation = form.elements.user_password_confirmation
   form.addEventListener('input', function() {
       if(password.value != '') pwMatch(password, password_confirmation)
     })
