@@ -40,3 +40,8 @@ en:
     create:
       success_html: <b><a href="%{url}">Gist</a> created </b>
       failure: "An error occured while saving gist"
+
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"
