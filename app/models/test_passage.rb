@@ -10,7 +10,13 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_first_question, on: :create
 
   def completed?
-    current_question.nil?
+    current_question.nil? || self.test_passage_time <= 0
+  end
+
+  def test_passage_time
+    if self.test.time.present?
+      (self.created_at + self.test.time.to_i * 60) - Time.now
+    end
   end
 
   def questions_in_test

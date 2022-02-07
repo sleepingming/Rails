@@ -2,6 +2,16 @@
 
 <%= content_tag :div,
     '',
+    id: 'timer',
+    data: { time: @test_passage.test_passage_time.to_s } %>
+<p> Осталось
+  <span id="h" ></span>
+  <span id="m" ></span>
+  <span id="s" ></span>
+</p>
+
+<%= content_tag :div,
+    '',
     id: 'progress-line',
     data: { questions_in_test: @test_passage.questions_in_test,
             current_question: @test_passage.current_question.id } %>
