@@ -1,8 +1,8 @@
 document.addEventListener('turbolinks:load', function() {
-  const form = document.getElementById("timer")
-  if (form) {
-    if (form.dataset.time) {
-      time = parseInt(form.dataset.time)
+  const timerElement = document.getElementById("timer")
+  if (timerElement) {
+    if (timerElement.dataset.time) {
+      time = parseInt(timerElement.dataset.time)
       timer()
       setInterval(timer, 1000)
     }
@@ -17,6 +17,9 @@ function timer(){
     document.getElementById('h').innerText = hours + ' часов'
     document.getElementById('m').innerText = min + ' минут'
     document.getElementById('s').innerText = sec + ' секунд'
+  } else {
+    let form = document.querySelector('form')
+    form.submit()
   }
   --time
 }
