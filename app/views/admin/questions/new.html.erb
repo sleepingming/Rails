@@ -1,6 +1,8 @@
 <h1><%= question_header(@test, @question) %></h1>
 
-<%= form_with model: [@test, @question] do |form|%>
+<%= form_with model: [:admin, @test, @question] do |form|%>
+  <%= form.text_field :body%>
+  <p><%= form.submit%></p>
 <% end %>
 
 <%= link_to "Назад", admin_test_path(@test)%>
