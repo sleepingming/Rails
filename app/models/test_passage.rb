@@ -1,5 +1,4 @@
 class TestPassage < ApplicationRecord
-
   SUCCESS_PERCENT = 85
 
   has_many :gists
@@ -10,7 +9,11 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_first_question, on: :create
 
   def completed?
-    current_question.nil? || self.test_passage_time <= 0
+    if test_passage_time.nil?
+      current_question.nil?
+    else
+      current_question.nil? || test_passage_time <= 0
+    end
   end
 
   def test_passage_time
@@ -24,13 +27,13 @@ class TestPassage < ApplicationRecord
   end
 
   def pass_percent
-    correct_answers.count.to_f / questions_in_test.to_f * 100
+    self.correct_questions.to_f / questions_in_test.to_f * 100
+    100
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
+    self.current_question = next_question
     save!
   end
 
@@ -41,7 +44,7 @@ class TestPassage < ApplicationRecord
   private
 
   def before_validation_set_first_question
-    self.current_question = next_question
+    self.current_question = test.questions.first
   end
 
   def correct_answer?(answer_ids)
@@ -54,10 +57,6 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    if self.current_question.nil?
-      self.current_question = test.questions.first if test.present?
-    else
-      test.questions.order(:id).where('id > ?', current_question.id).first
-    end
+    self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
   end
 end

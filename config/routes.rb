@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     post :start, on: :member
   end
 
+  resources :badges, only: :index
+
   resources :test_passages, only: %i[show update] do
     member do
       get :result
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
         resources :answers, shallow: true, except: :index
       end
     end
+    resources :badges
     resources :gists
   end
 end

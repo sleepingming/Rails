@@ -1,0 +1,7 @@
+<h1>Бэйджи</h1>
+<%= link_to 'Создать бэйдж', new_admin_badge_path%>
+<%= render 'shared/errors', resource: @badge %>
+<div>
+  <%= render @badges %>
+</div>
+<%= link_to "Назад", admin_tests_path %>

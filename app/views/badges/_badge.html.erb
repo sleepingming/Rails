@@ -1,0 +1,8 @@
+<div>
+  <div> <h5>Название: <%= badge.title %></h5></div>
+  <div>
+    <p>Условие: <%= badge.rule %></p>
+    <p>Параметр: <%= badge.parameter %></p>
+    <%= image_tag "#{badge.image_url}", alt: "#{badge.image_url}", size: "100x100" %>
+  </div>
+</div>

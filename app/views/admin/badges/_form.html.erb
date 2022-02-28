@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :badge_title %>
+  </p>
+
+  <p>
+    <%= form.label :rule %><br>
+    <%= form.select :rule, Badge.rules.keys %>
+  </p>
+
+  <p>
+    <%= form.label :parameter %>
+    <%= form.text_field :parameter, placeholder: 'level/category'%>
+  </p>
+
+  <p>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url, placeholder: 'Image url'%>  </p>
+
+  <p><%= form.submit %></p>
+
+<% end %>
+
+<%= link_to "Назад", admin_tests_path %>
