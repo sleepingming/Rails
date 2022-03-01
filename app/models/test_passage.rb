@@ -27,7 +27,7 @@ class TestPassage < ApplicationRecord
   end
 
   def pass_percent
-    self.correct_questions.to_f / questions_in_test.to_f * 100
+    correct_questions.to_f / questions_in_test.to_f * 100
   end
 
   def accept!(answer_ids)
@@ -43,7 +43,7 @@ class TestPassage < ApplicationRecord
   private
 
   def before_validation_set_first_question
-    self.current_question = test.questions.first
+    self.current_question = next_question
   end
 
   def correct_answer?(answer_ids)
@@ -56,6 +56,10 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+    if self.current_question.nil?
+      self.current_question = test.questions.first if test.present?
+    else
+      test.questions.order(:id).where('id > ?', current_question.id).first
+    end
   end
 end

@@ -5,20 +5,20 @@ class BadgeService
   end
 
   def call
-    Badge.all.each do |badge|
+    Badge.find_each do |badge|
       @user.badges.push(badge) if done_condition?(badge)
     end
   end
 
+  private
+
   def done_condition?(badge)
     @parameter = badge.parameter
     case badge.rule
-    when 'first_try'
-      first_try?
-    when 'success_category'
-      success_category?
-    when 'success_by_level'
-      success_by_level?
+    when 'first_try' then first_try?
+    when 'success_category' then success_category?
+    else
+      'success_by_level'
     end
   end
 
@@ -27,7 +27,7 @@ class BadgeService
   end
 
   def success_category?
-    Test.where(category: Category.where(title: @parameter)).count == TestPassage.where(success_passed?: true, user: @user, test: Test.tests_by(@parameter)).count
+    Test.where(category: Category.where(title: @parameter)).count == TestPassage.where(success_passed?: true, user: @user, test: Test.tests_by(@parameter)).to_a.uniq(&:test_id).count
   end
 
   def success_by_level?
