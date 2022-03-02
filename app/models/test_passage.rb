@@ -8,6 +8,8 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
 
+  scope :successfully, -> { where('score >= ?', SUCCESS_PERCENT) }
+
   def completed?
     if test_passage_time.nil?
       current_question.nil?
@@ -20,6 +22,10 @@ class TestPassage < ApplicationRecord
     if self.test.time.present?
       (self.created_at + self.test.time.to_i * 60) - Time.now
     end
+  end
+
+  def result
+    update!(score: pass_percent)
   end
 
   def questions_in_test
@@ -37,7 +43,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    pass_percent >= SUCCESS_PERCENT
+    score >= SUCCESS_PERCENT
   end
 
   private
