@@ -2,6 +2,7 @@ class Test < ApplicationRecord
   scope :easy_level, -> { where(level: 0..1) }
   scope :medium_level, -> { where(level: 2..4) }
   scope :hard_level, -> { where(level: 5..Float::INFINITY) }
+  scope :by_level, ->(wanted_level) { where(level: wanted_level) }
 
   belongs_to :category
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
@@ -15,7 +16,10 @@ class Test < ApplicationRecord
   def self.tests_by(category)
     joins(:category)
     .where(categories: { title: category })
-    .order(id: :desc)
-    .pluck(:title)
+    .order(title: :desc)
+  end
+
+  def self.tests_by_level(level)
+    by_level(level)
   end
 end
