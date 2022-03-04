@@ -3,7 +3,7 @@
 
 <h2>Ответы</h2>
 
-<%= link_to "Создать вопрос", new_admin_question_answer_path(@question) %>
+<%= link_to "Добавить ответ", new_admin_question_answer_path(@question) %>
 
 <ol>
   <%= render partial: 'admin/answers/answer', collection: @question.answers %>

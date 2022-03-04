@@ -29,17 +29,12 @@ questions = Question.create!([
   ])
 
 answers = Answer.create!([
-  {title: "2005", correct: 1, question: questions[0]},
-  {title: "2001", correct: 0, question: questions[0]},
-  {title: "Дэвид Ханссон", correct: 1, question: questions[1]},
-  {title: "Тим Бернерс-Ли", correct: 0, question: questions[1]},
-  {title: "1993", correct: 1, question: questions[2]},
-  {title: "1996", correct: 0, question: questions[2]},
-  {title: "Тим Бернерс-Ли", correct: 1, question: questions[3]},
-  {title: "Дэвид Ханссон", correct: 0, question: questions[3]}
-  ])
-
-results = Result.create!([
-  {user: users[0], test: tests[0]},
-  {user: users[0], test: tests[1]}
+  {title: "2005", correct: true, question: questions[0]},
+  {title: "2001", correct: false, question: questions[0]},
+  {title: "Дэвид Ханссон", correct: true, question: questions[1]},
+  {title: "Тим Бернерс-Ли", correct: false, question: questions[1]},
+  {title: "1993", correct: true, question: questions[2]},
+  {title: "1996", correct: false, question: questions[2]},
+  {title: "Тим Бернерс-Ли", correct: true, question: questions[3]},
+  {title: "Дэвид Ханссон", correct: false, question: questions[3]}
   ])
