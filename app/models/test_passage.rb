@@ -24,7 +24,7 @@ class TestPassage < ApplicationRecord
     end
   end
 
-  def result
+  def cache_result
     update!(score: pass_percent)
   end
 
