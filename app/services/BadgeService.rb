@@ -19,17 +19,25 @@ class BadgeService
     @test_passages.count == 1 if @test_passage.success?
   end
 
-  def success_category?(_params)
-    tests_by_category = Test.where(category_id: @parameter).count
-    !tests_by_category.zero? && (TestPassage.where(success_passed?: true, user: @user, test: Test.where(category_id: @parameter)).to_a.uniq(&:test_id).count == tests_by_category)
+  def success_category?(category_id)
+    if @test.category.id == category_id.to_i
+      test_ids = Test.where(category_id: category_id.to_i).ids
+      test_ids.size == success_tests(test_ids)
+    end
   end
 
-  def success_by_level?(level)
-    tests_by_level = Test.where(level: level.to_i).count
-    !tests_by_level.zero? && (TestPassage.where(success_passed?: true, user: @user, test: Test.by_level(level.to_i)).to_a.uniq(&:test_id).count == tests_by_level)
+  def success_by_level?(level_id)
+    if @test.level == level_id.to_i
+      test_ids = Test.where(level: level_id).ids
+      test_ids.size == success_tests(test_ids)
+    end
   end
 
   def set_test_passages
     @test_passages = @user.test_passages.where(test: @test)
+  end
+
+  def success_tests(test_ids)
+    @user.test_passages.where(test_id: test_ids).successfully.uniq.count
   end
 end
