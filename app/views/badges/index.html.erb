@@ -1,0 +1,10 @@
+<h1>Мои бэйджи</h1>
+<div>
+  <%= render current_user.badges %>
+</div>
+<h1>Все существующие бэйджи</h1>
+<div>
+  <%= render @badges %>
+</div>
+
+<%= link_to "Назад", tests_path %>

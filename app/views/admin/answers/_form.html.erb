@@ -2,8 +2,8 @@
   <%= render 'shared/errors', resource: @answer %>
 
   <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body, id: :answer_body %>
+    <%= form.label :title %><br>
+    <%= form.text_area :title, id: :answer_title %>
   </p>
 
   <p>
@@ -12,4 +12,4 @@
   </p>
 
   <p><%= form.submit %></p>
-<%= end %>
+<% end %>

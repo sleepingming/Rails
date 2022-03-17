@@ -1,5 +1,4 @@
 class TestPassage < ApplicationRecord
-
   SUCCESS_PERCENT = 85
 
   has_many :gists
@@ -9,8 +8,14 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
 
+  scope :successfully, -> { where('score >= ?', SUCCESS_PERCENT) }
+
   def completed?
-    current_question.nil? || self.test_passage_time <= 0
+    if test_passage_time.nil?
+      current_question.nil?
+    else
+      current_question.nil? || test_passage_time <= 0
+    end
   end
 
   def test_passage_time
@@ -19,23 +24,25 @@ class TestPassage < ApplicationRecord
     end
   end
 
+  def cache_result
+    update!(score: pass_percent)
+  end
+
   def questions_in_test
     self.test.questions.count
   end
 
   def pass_percent
-    correct_answers.count.to_f / questions_in_test.to_f * 100
+    correct_questions.to_f / questions_in_test.to_f * 100
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
   end
 
   def success?
-    pass_percent >= SUCCESS_PERCENT
+    score >= SUCCESS_PERCENT
   end
 
   private

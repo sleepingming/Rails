@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: 'Test', foreign_key: 'author_id', dependent: :destroy
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages, dependent: :destroy
+  has_and_belongs_to_many :badges, dependent: :destroy
 
   belongs_to :current_user, class_name: 'User', optional: true
 
