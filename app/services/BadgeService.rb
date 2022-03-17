@@ -3,11 +3,10 @@ class BadgeService
     @test_passage = test_passage
     @user = test_passage.user
     @test = test_passage.test
-    @badges = Badge.where.not(id: @user.badges.ids)
   end
 
   def call
-    @badges.select do |badge|
+    Badge.select do |badge|
       send("#{badge.rule}?", badge.parameter)
     end
   end
